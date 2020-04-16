@@ -561,7 +561,7 @@ class Microbit:
         if iface != constants.GATT_CHRC_IFACE:
             return
         if 'Value' in changed_props:
-            self.uart_tx_cb(''.join([str(v) for v in changed_props['Value']]))
+            self.uart_tx_cb(''.join([int(v) for v in changed_props['Value']]))
 
     @property
     def on_disconnect(self):
