@@ -555,9 +555,15 @@ class Microbit:
         """
         self.uart_tx_cb = user_callback
         self._uart_tx.add_characteristic_cb(self._uart_read)
+     
+    def notify_uart(self):
+        """
+        Start notify of data being received on UART service
+        :return:
+        """
         self._uart_tx.start_notify()
-      
-    def unsubscribe_uart(self):
+    
+    def unnotify_uart(self):
         """
         Stop notify of data being received on UART service
         :return:
