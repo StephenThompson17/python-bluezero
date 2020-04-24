@@ -556,7 +556,14 @@ class Microbit:
         self.uart_tx_cb = user_callback
         self._uart_tx.add_characteristic_cb(self._uart_read)
         self._uart_tx.start_notify()
-
+      
+    def unsubscribe_uart(self):
+        """
+        Stop notify of data being received on UART service
+        :return:
+        """
+        self._uart_tx.stop_notify()
+        
     def _uart_read(self, iface, changed_props, invalidated_props):
         if iface != constants.GATT_CHRC_IFACE:
             return
